@@ -17,6 +17,7 @@ public class SpendController {
 
     @GetMapping("/api/spends")
     public String getSpends() throws IOException {
-        return spendService.calculateSpends();
+        spendService.calculateSpends();
+        return "total";
     }
 }

@@ -1,5 +1,6 @@
 package io.plagov.spend_parser.service;
 
+import io.plagov.spend_parser.models.TotalSpend;
 import io.plagov.spend_parser.models.Transaction;
 import io.plagov.spend_parser.parser.CsvToBeanParser;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,7 @@ public class SpendService {
 
     private final CsvToBeanParser parser;
 
-    private final List<String> GROCERIES_MERCHANTS = List.of(
+    private final static List<String> GROCERIES_MERCHANTS = List.of(
             "rimi",
             "selver",
             "konsum",
@@ -23,14 +24,31 @@ public class SpendService {
             "promo",
             "grossi");
 
+    private final static List<String> PHARMACIES_MERCHANTS = List.of(
+            "tervisekeskus",
+            "apte");
+
     public SpendService(CsvToBeanParser parser) {
         this.parser = parser;
     }
 
-    public String calculateSpends() throws IOException {
+    public TotalSpend calculateSpends() throws IOException {
         var transactions = parser.parseIntoBeans();
         var groceries = calculateSumOfGroceries(transactions);
-        return "kek";
+        var pharmacy = calculateSumOfPharmacy(transactions);
+        return new TotalSpend(groceries, pharmacy);
+    }
+
+    private boolean isPharmacy(Transaction transaction) {
+        var merchant = transaction.getMerchant().toLowerCase();
+        return PHARMACIES_MERCHANTS.stream().anyMatch(merchant::contains);
+    }
+
+    private double calculateSumOfPharmacy(List<Transaction> transactions) {
+        return transactions.stream()
+                .filter(this::isPharmacy)
+                .mapToDouble(transaction -> Math.abs(transaction.getAmount()))
+                .sum();
     }
 
     private double calculateSumOfGroceries(List<Transaction> transactions) {
