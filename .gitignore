@@ -4,6 +4,11 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+node_modules/
+package-lock.json
+
+# Generated CSS
+src/main/resources/static/css/output.css
 
 ### STS ###
 .apt_generated
