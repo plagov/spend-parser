@@ -37,7 +37,7 @@ public class SpendService {
         var transactions = parser.parseIntoBeans(file);
         var groceries = calculateSumOfGroceries(transactions);
         var pharmacy = calculateSumOfPharmacy(transactions);
-        return new TotalSpend(groceries, pharmacy);
+        return new TotalSpend(Math.ceil(groceries), Math.ceil(pharmacy));
     }
 
     private boolean isPharmacy(Transaction transaction) {
