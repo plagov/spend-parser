@@ -4,6 +4,7 @@ import io.plagov.spend_parser.models.TotalSpend;
 import io.plagov.spend_parser.models.Transaction;
 import io.plagov.spend_parser.parser.CsvToBeanParser;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -32,8 +33,8 @@ public class SpendService {
         this.parser = parser;
     }
 
-    public TotalSpend calculateSpends() throws IOException {
-        var transactions = parser.parseIntoBeans();
+    public TotalSpend calculateSpends(MultipartFile file) throws IOException {
+        var transactions = parser.parseIntoBeans(file);
         var groceries = calculateSumOfGroceries(transactions);
         var pharmacy = calculateSumOfPharmacy(transactions);
         return new TotalSpend(groceries, pharmacy);

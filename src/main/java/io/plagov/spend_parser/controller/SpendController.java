@@ -2,7 +2,11 @@ package io.plagov.spend_parser.controller;
 
 import io.plagov.spend_parser.service.SpendService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
@@ -21,9 +25,15 @@ public class SpendController {
         return new ModelAndView("index");
     }
 
-    @GetMapping("/api/spends")
-    public String getSpends() throws IOException {
-        var totalSpend = spendService.calculateSpends();
-        return "total";
+    @PostMapping("/upload")
+    public String uploadFile(@RequestParam("file") MultipartFile file, Model model) throws IOException {
+        if (!file.isEmpty()) {
+            var totalSpend = spendService.calculateSpends(file);
+            model.addAttribute("totalSpend", totalSpend);
+            return "total";
+        } else {
+            model.addAttribute("error", "Something went wrong");
+            return "index";
+        }
     }
 }
