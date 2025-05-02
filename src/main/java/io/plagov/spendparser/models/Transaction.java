@@ -1,4 +1,4 @@
-package io.plagov.spend_parser.models;
+package io.plagov.spendparser.models;
 
 import com.opencsv.bean.CsvBindByName;
 

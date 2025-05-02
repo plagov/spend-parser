@@ -1,4 +1,4 @@
-package io.plagov.spend_parser;
+package io.plagov.spendparser;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

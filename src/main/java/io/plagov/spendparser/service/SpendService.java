@@ -1,8 +1,8 @@
-package io.plagov.spend_parser.service;
+package io.plagov.spendparser.service;
 
-import io.plagov.spend_parser.models.TotalSpend;
-import io.plagov.spend_parser.models.Transaction;
-import io.plagov.spend_parser.parser.CsvToBeanParser;
+import io.plagov.spendparser.models.TotalSpend;
+import io.plagov.spendparser.models.Transaction;
+import io.plagov.spendparser.parser.CsvToBeanParser;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 

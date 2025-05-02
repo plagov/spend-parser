@@ -1,4 +1,4 @@
-package io.plagov.spend_parser;
+package io.plagov.spendparser;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

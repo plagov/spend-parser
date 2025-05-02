@@ -1,6 +1,6 @@
-package io.plagov.spend_parser.controller;
+package io.plagov.spendparser.controller;
 
-import io.plagov.spend_parser.service.SpendService;
+import io.plagov.spendparser.service.SpendService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

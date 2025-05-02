@@ -1,7 +1,7 @@
-package io.plagov.spend_parser.parser;
+package io.plagov.spendparser.parser;
 
 import com.opencsv.bean.CsvToBeanBuilder;
-import io.plagov.spend_parser.models.Transaction;
+import io.plagov.spendparser.models.Transaction;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
