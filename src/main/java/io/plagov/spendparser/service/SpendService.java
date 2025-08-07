@@ -23,7 +23,8 @@ public class SpendService {
             "lidl",
             "netomarket",
             "promo",
-            "grossi");
+            "grossi",
+            "a&o kauplus");
 
     private final static List<String> PHARMACIES_MERCHANTS = List.of(
             "tervisekeskus",

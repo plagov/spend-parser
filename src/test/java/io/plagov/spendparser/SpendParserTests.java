@@ -28,7 +28,7 @@ class SpendParserTests {
         mockMvc.perform(multipart("/upload").file("file", fileContent))
                 .andExpect(status().isOk())
                 .andExpect(view().name("total"))
-                .andExpect(xpath("//span[@data-testid='groceries-total']").string("€148"))
+                .andExpect(xpath("//span[@data-testid='groceries-total']").string("€160"))
                 .andExpect(xpath("//span[@data-testid='pharmacy-total']").string("€96"));
     }
 }
